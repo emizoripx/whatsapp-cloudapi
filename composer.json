@@ -1,0 +1,26 @@
+{
+    "name": "emizoripx/whatsapp-cloudapi",
+    "description": "Library for sending Whatsapp messages with the Whatsapp Cloud Api service",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alvaro Molina",
+            "email": "remberto.molina@emizor.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "EmizorIpx\\WhatsappCloudapi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EmizorIpx\\WhatsappCloudapi\\WhatsappCloudapiServiceProvider"
+            ]
+        }
+    }
+}
