@@ -2,7 +2,9 @@
 
 namespace EmizorIpx\WhatsappCloudapi;
 
+use EmizorIpx\WhatsappCloudapi\Console\Commands\TestFacadeSendMessage;
 use EmizorIpx\WhatsappCloudapi\Console\Commands\TestSendMessage;
+use EmizorIpx\WhatsappCloudapi\Utils\WhatsappCloudapiSendHelper;
 use Illuminate\Support\ServiceProvider;
 
 class WhatsappCloudapiServiceProvider extends ServiceProvider
@@ -15,6 +17,14 @@ class WhatsappCloudapiServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadMigrationsFrom(__DIR__."/Database/Migrations");
+
+
+        // FACADES
+        $app = $this->app;
+
+        $app->bind('send_whatsapp_message', function(){
+            return new WhatsappCloudapiSendHelper();
+        });
     }
 
     /**
@@ -40,7 +50,8 @@ class WhatsappCloudapiServiceProvider extends ServiceProvider
         if( $this->app->runningInConsole() ) {
 
             $this->commands([
-                TestSendMessage::class
+                TestSendMessage::class,
+                TestFacadeSendMessage::class
             ]);
         }
     }

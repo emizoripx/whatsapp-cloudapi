@@ -86,6 +86,15 @@ class WhatsappService {
 
     }
 
+    public function setPreparedData( $value ) {
+
+        $this->prepared_data = $value;
+    }
+    public function getPreparedData() {
+
+        return $this->prepared_data;
+    }
+
     public function sendTemplateWhatsapp( string $number_phone, string $template_name, Component $components = null ){
 
         try {
@@ -94,7 +103,11 @@ class WhatsappService {
     
             $request = new RequestTemplateMessage($message, $this->token, $this->phone_id_number);
     
+            $this->setPreparedData($request->getBody());
+
             $response = $this->client->sendRequest($request);
+
+            $this->setParsedResponse( $response->getDecodedBody() );
 
             return $response;
             

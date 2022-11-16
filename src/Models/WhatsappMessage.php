@@ -11,5 +11,15 @@ class WhatsappMessage extends Model
 
     protected $guarded = [];
 
+    const DISPATCHED_STATE = 'dispatched';
+    const SENT_STATE = 'sent';
+    const DELIVERED_STATE = 'delivered';
+    const READ_STATE = 'read';
+    const DELETED_STATE = 'deleted';
+    const FAILED_STATE = 'failed';
+
+    const SUCCESS_STATUS = 'success';
+    const FAILED_STATUS = 'failed';
+
 
 }

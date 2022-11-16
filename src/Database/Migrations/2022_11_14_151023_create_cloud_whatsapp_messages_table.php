@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('cloud_whatsapp_messages', function (Blueprint $table) {
             $table->id();
-            $table->string('message_key');
-            $table->string('message_id')->nullable();
+            $table->string('message_key')->index();
+            $table->string('message_id')->nullable()->index();
             $table->text('message')->nullable();
-            $table->string('number_phone')->nullable();
+            $table->string('number_phone')->nullable()->index();
             $table->string('status')->nullable();
             $table->string('state')->nullable();
             $table->string('status_description')->nullable();
