@@ -60,7 +60,7 @@ class TestFacadeSendMessage extends Command
 
         $components = new Component($component_headers, [], $component_buttons);
 
-        $cloud_api_settings = new WhatsappCloudApiSettings('100217716213600', 'EAAQgOnTiZClYBACPaLZC8vjXqTu4DlB49TO9UnF5zLKwjcAZAjI1pOM5ZAyXZAaRtfjkLIzxls8TRTPQcSE2m8x5RCZBkskocZCtEtfPGNeAgeAWI6BbgjyFpgoZA1adzBTnHKJDBHrGUhShKhuY50dw2oydHUU1TpaVt9ZB0QZB6oBJSJSExfZCySovMrOkkKMGmchsQWgZBCGdlQZDZD');
+        $cloud_api_settings = new WhatsappCloudApiSettings('100217716213600', 'EAAQgOnTiZClYBADZCombKxUdeJ7O91r0r1S8ox4lMkkboQpfZC5VD9mxS3aTKnkZAw0lXq6amrtQSOWedQ9wWqOp7PZBPVvLd7dnG5nZAQfRTi30P4CZBe0AYbt5P0Shod3KbZA8nTdCKEhIZCAZB6o5i4yJMU6uwN0ldDbczsgYz1iDBPxHOsSPTGbvwjtv1rnkoQYhaax134ogZDZD');
 
         try {
 
