@@ -18,6 +18,9 @@ class WhatsappCloudapiServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__."/Database/Migrations");
 
+        // ROUTES
+        $this->loadRoutesFrom(__DIR__."/Routes/api.php");
+
 
         // FACADES
         $app = $this->app;
@@ -37,6 +40,9 @@ class WhatsappCloudapiServiceProvider extends ServiceProvider
         // MIGRATIONS
 
         $this->loadMigrationsFrom(__DIR__."/Database/Migrations");
+
+        // ROUTES
+        $this->loadRoutesFrom(__DIR__."/Routes/api.php");
 
 
         # CONFIG FILE

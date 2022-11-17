@@ -29,6 +29,7 @@ return new class extends Migration
             $table->text('errors')->nullable();
             $table->text('error_details')->nullable();
             $table->boolean('billable')->default(true);
+            $table->text('last_callback_reponse')->nullable();
             $table->timestamps();
         });
     }

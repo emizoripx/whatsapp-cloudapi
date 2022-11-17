@@ -3,6 +3,7 @@
 namespace EmizorIpx\WhatsappCloudapi\Utils;
 
 use EmizorIpx\WhatsappCloudapi\Models\WhatsappMessage;
+use Carbon\Carbon;
 
 class WhatsappMessageStates {
 
@@ -31,6 +32,32 @@ class WhatsappMessageStates {
             
             default:
                 return "Estado no esperado.";
+                break;
+        }
+
+    }
+
+
+    public static function setStateDate($state, $date = null){
+
+        $array_data = [];
+
+        switch ($state) {
+            case WhatsappMessage::DISPATCHED_STATE:
+                return ['dispatched_date' => Carbon::parse($date)->toDateTimeString()];
+                break;
+            case WhatsappMessage::SENT_STATE:
+                return ['send_date' => Carbon::parse($date)->toDateTimeString()];
+                break;
+            case WhatsappMessage::DELIVERED_STATE:
+                return ['delivered_date' => Carbon::parse($date)->toDateTimeString()];
+                break;
+            case WhatsappMessage::READ_STATE:
+                return ['read_date' => Carbon::parse($date)->toDateTimeString()];
+                break;
+            
+            default:
+                return $array_data;
                 break;
         }
 
