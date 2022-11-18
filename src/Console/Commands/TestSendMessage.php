@@ -32,7 +32,10 @@ class TestSendMessage extends Command
     {
         $phone_number = $this->argument('number_phone');
 
-        $cloud_whatsapp_service = new WhatsappService( '100217716213600', 'EAAQgOnTiZClYBACPaLZC8vjXqTu4DlB49TO9UnF5zLKwjcAZAjI1pOM5ZAyXZAaRtfjkLIzxls8TRTPQcSE2m8x5RCZBkskocZCtEtfPGNeAgeAWI6BbgjyFpgoZA1adzBTnHKJDBHrGUhShKhuY50dw2oydHUU1TpaVt9ZB0QZB6oBJSJSExfZCySovMrOkkKMGmchsQWgZBCGdlQZDZD' );
+        $phone_number_id = '';
+        $access_token = '';
+
+        $cloud_whatsapp_service = new WhatsappService( $phone_number_id, $access_token );
 
         $component_buttons = [
             [
