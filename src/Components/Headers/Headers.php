@@ -17,10 +17,11 @@ class Headers {
 
     }
 
-    public static function createDocumentHeader( $link ){
+    public static function createDocumentHeader( $link, $filename ){
 
         $array_data = [
-            "link" => $link
+            "link" => $link,
+            "filename" => $filename
         ];
 
         $header_document = new Header(Header::DOCUMENT_HEADER_TYPE, $array_data);
