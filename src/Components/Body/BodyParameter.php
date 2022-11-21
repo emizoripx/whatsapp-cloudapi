@@ -16,7 +16,7 @@ class BodyParameter {
 
     const BODY_PARAMETERS_DATE_TIME_TYPE = 'date_time';
 
-    public function __construct( $type,  array $parameters )
+    public function __construct( $type, $parameters )
     {
         $this->type = $type;
 
