@@ -2,6 +2,7 @@
 
 namespace EmizorIpx\WhatsappCloudapi\Http\Controllers\Api;
 
+use EmizorIpx\WhatsappCloudapi\Jobs\ForwardCallbackNotification;
 use EmizorIpx\WhatsappCloudapi\Models\WhatsappMessage;
 use EmizorIpx\WhatsappCloudapi\Response\CallbackResponse;
 use EmizorIpx\WhatsappCloudapi\Utils\WhatsappMessageStates;
@@ -56,6 +57,8 @@ class CloudWhatsappMessageController extends Controller
         if( ! $message ) {
 
             \Log::debug("WHATSAPP CLOUD API Callback >>>>>>>>>>>>>>>>>>>>>> Mensaje no encontrado");
+
+            ForwardCallbackNotification::dispatch($data)->delay(now()->addSeconds(2))->onQueue('default');
 
             return;
 

@@ -7,4 +7,8 @@ return [
     'language_template' => 'ES',
 
     'cloud_api_version' => 'v15.0',
+
+    'forward_notification_enabled' => env('FORWARD_CALLBACK_NOTIFICACTIONS_ENABLED', false),
+
+    'url_to_forward_notification' => env('URL_TO_FORWARD_NOTIFICACTIONS', null),
 ];
