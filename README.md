@@ -32,7 +32,7 @@ Before use, you must configure the following parameters
     $cloud_settings = new WhatsappCloudApiSettings( $from_phone_number_id, $access_token );
     $components = new Component($header_components, $body_components, $buttons_components);
 
-    WhatsappMessage::sendWhithTemplate( WhatsappCloudapiMessage::sendMessageWithTemplate($cloud_settings, $phone_number, $template_name, $components); );
+    WhatsappCloudapiMessage::sendMessageWithTemplate($cloud_settings, $phone_number, $template_name, $components);
 
 ```
 
