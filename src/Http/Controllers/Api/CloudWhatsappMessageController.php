@@ -2,6 +2,7 @@
 
 namespace EmizorIpx\WhatsappCloudapi\Http\Controllers\Api;
 
+use EmizorIpx\WhatsappCloudapi\Events\WhatsappResponseMessageReceived;
 use EmizorIpx\WhatsappCloudapi\Jobs\ForwardCallbackNotification;
 use EmizorIpx\WhatsappCloudapi\Models\WhatsappMessage;
 use EmizorIpx\WhatsappCloudapi\Response\CallbackResponse;
@@ -34,6 +35,14 @@ class CloudWhatsappMessageController extends Controller
         \Log::debug(" WHATSAPP CLOUD API Callback >>>>>>>>>>>>>>>>>>>>>> Callback Data: " . json_encode($data));
 
         $callback_reponse = new CallbackResponse($data);
+
+        if( ! is_null($callback_reponse->getResponseMessage()) ) {
+
+            // TODO: Send Event
+            event( new WhatsappResponseMessageReceived( $callback_reponse ) );
+
+            return;
+        }
 
 
         if( empty( $callback_reponse->getStatusesData() ) ) {
@@ -102,5 +111,5 @@ class CloudWhatsappMessageController extends Controller
         return;
 
     }
-    
+
 }
