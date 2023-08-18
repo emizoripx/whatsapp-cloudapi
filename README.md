@@ -1,4 +1,4 @@
-# WHATSAPP CLOUD API PACKAGE v1.0.0
+# WHATSAPP CLOUD API PACKAGE v1.0.7
 
 ## Package for sending Whatsapp messages with the Whatsapp Cloud Api Service.
 

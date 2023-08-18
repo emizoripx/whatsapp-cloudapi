@@ -24,6 +24,10 @@ class CallbackResponse {
 
     protected $timestamp;
 
+    /**
+     * @var ResponseMessage
+     */
+    protected $response_message;
 
     public function __construct( array $data )
     {
@@ -43,7 +47,7 @@ class CallbackResponse {
 
     public function getFromPhoneNumberId(){
 
-        return $this->display_phone_number;
+        return $this->from_phone_number_id;
 
     }
 
@@ -80,6 +84,11 @@ class CallbackResponse {
     public function getIsBillable() {
 
         return isset($this->is_billable);
+    }
+
+    public function getResponseMessage() {
+
+        return $this->response_message;
     }
 
     public function decodeResponse() {
@@ -119,6 +128,8 @@ class CallbackResponse {
         $this->state_message = ( isset($statuses_data['status'])) ? $statuses_data['status'] : null;
 
         $this->statuses_data = $statuses_data;
+
+        $this->response_message = isset( $values['messages'] ) ? new ResponseMessage($values['messages'], $values['contacts']) : null;
 
     }
 
