@@ -5,6 +5,7 @@ namespace EmizorIpx\WhatsappCloudapi\Http\Controllers\Api;
 use EmizorIpx\WhatsappCloudapi\Events\WhatsappResponseMessageReceived;
 use EmizorIpx\WhatsappCloudapi\Jobs\ForwardCallbackNotification;
 use EmizorIpx\WhatsappCloudapi\Models\WhatsappMessage;
+use EmizorIpx\WhatsappCloudapi\Response\CallbackManyContactsResponse;
 use EmizorIpx\WhatsappCloudapi\Response\CallbackResponse;
 use EmizorIpx\WhatsappCloudapi\Utils\WhatsappMessageStates;
 use Illuminate\Http\Request;
@@ -110,6 +111,25 @@ class CloudWhatsappMessageController extends Controller
 
         return;
 
+    }
+
+    public function manyContactsCallback( Request $request  ) {
+
+        \Log::debug("WHATSAPP CLOUD API Callback INIT >>>>>>>>>>>>>>>>>>>>>> " . $request->getHost());
+
+        $data = $request->all();
+
+        \Log::debug(" WHATSAPP CLOUD API Callback >>>>>>>>>>>>>>>>>>>>>> Callback Data: " . json_encode($data));
+
+        $callback_reponse = new CallbackManyContactsResponse($data);
+
+        if( ! is_null($callback_reponse->getResponseMessage()) ) {
+
+            // TODO: Send Event
+            event( new WhatsappResponseMessageReceived( $callback_reponse ) );
+
+            return;
+        }
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace EmizorIpx\WhatsappCloudapi\Events;
 
+use EmizorIpx\WhatsappCloudapi\Response\Abstracts\AbstractCallbackResponse;
 use EmizorIpx\WhatsappCloudapi\Response\CallbackResponse;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -21,7 +22,7 @@ class WhatsappResponseMessageReceived
      *
      * @return void
      */
-    public function __construct( CallbackResponse $callback_response )
+    public function __construct( AbstractCallbackResponse $callback_response )
     {
         $this->callback_response = $callback_response;
     }

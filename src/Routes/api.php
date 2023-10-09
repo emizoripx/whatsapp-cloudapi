@@ -7,6 +7,7 @@ Route::group(['namespace' => "\EmizorIpx\WhatsappCloudapi\Http\Controllers\Api",
     Route::get('callback', 'CloudWhatsappMessageController@verify');
     Route::post('callback', 'CloudWhatsappMessageController@callback');
 
+    Route::post('manycontacts/callback', 'CloudWhatsappMessageController@manyContactsCallback');
 
 
 });
