@@ -25,6 +25,8 @@ class ResponseMessage {
 
     protected $type;
 
+    protected $wa_id;
+
     public function __construct( array $messages, array $contacts) {
 
         $this->message = $messages[0];
@@ -44,6 +46,11 @@ class ResponseMessage {
     public function getProfile() {
 
         return $this->profile;
+    }
+
+    public function getWaId() {
+
+        return $this->wa_id;
     }
 
     /**
@@ -99,6 +106,8 @@ class ResponseMessage {
     public function decodeMessage() {
 
         $this->profile = isset( $this->contacts['profile'] ) ? $this->contacts['profile'] : [];
+
+        $this->wa_id = isset($this->contacts['wa_id']) ? $this->contacts['wa_id'] : null;
 
         \Log::debug('Profile: ' . json_encode( $this->profile ));
 
