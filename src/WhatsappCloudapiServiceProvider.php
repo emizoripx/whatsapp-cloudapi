@@ -4,6 +4,7 @@ namespace EmizorIpx\WhatsappCloudapi;
 
 use EmizorIpx\WhatsappCloudapi\Console\Commands\TestFacadeSendMessage;
 use EmizorIpx\WhatsappCloudapi\Console\Commands\TestSendMessage;
+use EmizorIpx\WhatsappCloudapi\Utils\ManyContactsSendHelper;
 use EmizorIpx\WhatsappCloudapi\Utils\WhatsappCloudapiSendHelper;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,11 @@ class WhatsappCloudapiServiceProvider extends ServiceProvider
 
         $app->bind('send_whatsapp_message', function(){
             return new WhatsappCloudapiSendHelper();
+        });
+
+        $app->bind('send_whatsapp_text_message', function() {
+
+            return new ManyContactsSendHelper();
         });
     }
 

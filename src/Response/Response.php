@@ -3,6 +3,7 @@
 namespace EmizorIpx\WhatsappCloudapi\Response;
 
 use EmizorIpx\WhatsappCloudapi\Exceptions\ResponseWhatsappCloudapiException;
+use EmizorIpx\WhatsappCloudapi\Request\ManyContacts\Request as ManyContactRequest;
 use EmizorIpx\WhatsappCloudapi\Request\Request;
 
 class Response {
@@ -19,7 +20,7 @@ class Response {
     protected $request;
 
 
-    public function __construct( Request $request, $body, $http_status_code = null, array $headers = [] ) 
+    public function __construct( Request | ManyContactRequest $request, $body, $http_status_code = null, array $headers = [] )
     {
         $this->request = $request;
         $this->body = $body;
@@ -27,7 +28,7 @@ class Response {
         $this->headers = $headers;
 
         $this->decodeBody();
-        
+
     }
 
     public function isError(){
@@ -42,11 +43,11 @@ class Response {
 
     public function getHttpStatusCode(){
 
-        return $this->http_response_code;
+        return $this->http_status_code;
     }
 
     public function getHeaders() {
-        
+
         return $this->headers;
     }
 
@@ -58,7 +59,7 @@ class Response {
     public function getDecodedBody() {
 
         return $this->decoded_body;
-        
+
     }
 
     public function graphVersion(){
